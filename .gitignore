@@ -1,0 +1,10 @@
+.DS_Store
+*.fits
+*.fit
+*.tiff
+*.tif
+*.o
+*.out
+old/
+data/
+astroimg
