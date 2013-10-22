@@ -49,6 +49,10 @@ Color composites can be done using Photoshop, GIMP or ImageMagick.  If the resol
 
     ./astroimg [stretch] [background level] [peak level] [scaled peak level] [black level] [white level] filepath
 
+## Note
+
+Only two stretches are supported at the moment `arcsinh` and double arcsinh (`arcsinh2`).
+
 Example
 =======
 

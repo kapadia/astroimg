@@ -108,8 +108,12 @@ int main (int argc, const char * argv[])
         computed = scaledBackgroundLevel + scaledRange * (original[i] - backgroundLevel) / range;
         
         // Stretch the pixel using two applications of arcsinh
-        computed = arcsinh(computed);
-        computed = arcsinh(computed);
+        if (stretch.compare("arcsinh") == 0) {
+          computed = arcsinh(computed);
+        } else if (stretch.compare("arcsinh2") == 0) {
+          computed = arcsinh(computed);
+          computed = arcsinh(computed);
+        }
         
         // Scale to 16 bit integer
         computed = (computed - blackLevel) / scaleRange;
