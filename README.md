@@ -7,12 +7,12 @@ Installation
 ============
 This utility depends on two libraries:
 
-* [cfitsio](http://heasarc.gsfc.nasa.gov/fitsio/)
-* [libtiff](http://www.libtiff.org/)
+* [`cfitsio`](http://heasarc.gsfc.nasa.gov/fitsio/)
+* [`libtiff`](http://www.libtiff.org/)
 
-Installation of cfitsio is explained at [http://heasarc.gsfc.nasa.gov/docs/software/fitsio/quick/node3.html](http://heasarc.gsfc.nasa.gov/docs/software/fitsio/quick/node3.html)
+Installation of `cfitsio` is explained at [http://heasarc.gsfc.nasa.gov/docs/software/fitsio/quick/node3.html](http://heasarc.gsfc.nasa.gov/docs/software/fitsio/quick/node3.html)
 
-Installation of libtiff may be more complicated.  If on OS X there is an issue resolving a preprocessor variable regarding OpenGL.  Here's the solution:
+Installation of `libtiff` may be more complicated.  If on OS X there is an issue resolving a preprocessor variable regarding OpenGL.  Here's the solution:
 
 Edit the file `tools/tiffgt.c` by changing
 
@@ -47,7 +47,7 @@ Processing large files can be difficult since FITS Liberator attempts to store a
 
 Color composites can be done using Photoshop, GIMP or ImageMagick.  If the resolution of the images are extremely large, it might be worthwhile to downsample the TIFFs, apply the color in Photoshop, then use ImageMagick to create the full resolution composite using the colors found in Photoshop.
 
-    ./astroimg [stretch] [background level] [scaled background level] [peak level] [scaled peak level] [black level] [white level] [bit depth] filepath
+    ./astroimg [stretch] [background level] [peak level] [scaled peak level] [black level] [white level] filepath
 
 Example
 =======

@@ -24,28 +24,23 @@ std::string createFilename (const char* path) {
 int main (int argc, const char * argv[])
 {
     if (argc < 8) {
-        std::cout << "stretch backgroundLevel scaledBackgroundLevel peakLevel scaledPeakLevel blackLevel whiteLevel bitdepth filepath" << std::endl;
+        std::cout << "stretch backgroundLevel peakLevel scaledPeakLevel blackLevel whiteLevel filepath" << std::endl;
         return 0;
     }
     
     // Capture the arguments
     const std::string stretch = argv[1];
     const float backgroundLevel = atof(argv[2]);
-    const float scaledBackgroundLevel = atof(argv[3]);
-    const float peakLevel = atof(argv[4]);
-    const float scaledPeakLevel = atof(argv[5]);
-    const float blackLevel = atof(argv[6]);
-    const float whiteLevel = atof(argv[7]);
-    const unsigned int bitdepth = atoi(argv[8]);
-    const char* filepath = argv[9];
+    const float peakLevel = atof(argv[3]);
+    const float scaledPeakLevel = atof(argv[4]);
+    const float blackLevel = atof(argv[5]);
+    const float whiteLevel = atof(argv[6]);
+    const char* filepath = argv[7];
     
-    // Define data type
-    // #define BIT_DEPTH bitdepth
-    // #if BIT_DEPTH <= 8
-    // #define bitdepth_t uint8_t
-    // #else
-    // #define bitdepth_t uint16_t
-    // #endif
+    // NOTE: This factor doesn't seem to be used in FITS Liberator
+    const float scaledBackgroundLevel = 0.0;
+    const unsigned int bitdepth = 16;
+    
     #define bitdepth_t uint16_t
     
     // Declare variables
@@ -87,7 +82,7 @@ int main (int argc, const char * argv[])
     TIFFSetField(image, TIFFTAG_FILLORDER, FILLORDER_MSB2LSB);
     TIFFSetField(image, TIFFTAG_PLANARCONFIG, PLANARCONFIG_CONTIG);
     TIFFSetField(image, TIFFTAG_COMPRESSION, COMPRESSION_LZW);
-    TIFFSetField(image, TIFFTAG_SOFTWARE, "astroimg 0.0.1");
+    TIFFSetField(image, TIFFTAG_SOFTWARE, "astroimg 0.0.2");
     
     // Allocate memory for one row of pixels for FITS and TIFF data
     bytesPerStrip = naxes[0] * sizeof(bitdepth_t);
